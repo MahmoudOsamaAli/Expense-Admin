@@ -23,8 +23,6 @@ public class SelectedCategory extends AppCompatActivity implements SelectedCateg
 
     @BindView(R.id.RV_selected_category)
     RecyclerView mRV;
-    @BindView(R.id.search_view)
-    SearchView mSearchView;
     @BindView(R.id.selected_category_toolbar)
     Toolbar toolbar;
     SelectedCategoryPresenter presenter;
@@ -40,7 +38,6 @@ public class SelectedCategory extends AppCompatActivity implements SelectedCateg
     private void init() {
         presenter = new SelectedCategoryPresenter(this);
         presenter.getList();
-        searchViewConfig();
         toolBarConfig();
     }
 
@@ -58,10 +55,6 @@ public class SelectedCategory extends AppCompatActivity implements SelectedCateg
                 });
             }
         }
-    }
-
-    private void searchViewConfig() {
-        mSearchView.setOnClickListener(view -> mSearchView.setIconified(false));
     }
 
     @Override

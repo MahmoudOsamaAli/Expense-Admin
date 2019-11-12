@@ -56,5 +56,7 @@
     <string name="sign_up_with_twitter">Sign up with twitter</string>
     <string name="back">back</string>
     <string name="gender_text">Male</string>
+    <string name="search_title">Search</string>
+    <string name="search_hint">type your search request</string>
 
 </resources>

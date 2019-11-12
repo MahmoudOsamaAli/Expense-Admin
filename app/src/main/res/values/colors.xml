@@ -6,7 +6,7 @@
     <!--    <color name="colorAccent">#655584</color>-->
     <color name="colorAccent">#394a62</color>
 
-    <color name="text_color">@android:color/white</color>
+    <color name="text_color">@android:color/black</color>
     <color name="progress_start">#17f609</color>
     <color name="gray_light">#d1d1ba</color>
     <color name="gray_dark">#aaa</color>

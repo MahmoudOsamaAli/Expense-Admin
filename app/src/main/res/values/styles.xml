@@ -6,15 +6,16 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="searchViewStyle">@style/ThemeOverlay.AppCompat.Light</item>
         <item name="android:windowTranslucentStatus">true</item>
         <item name="android:windowTranslucentNavigation">true</item>
-        <item name="android:colorControlHighlight">@color/colorPrimaryDark</item>
+        <item name="android:colorControlHighlight">@color/text_color</item>
     </style>
 
     <style name="launcher" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="android:colorControlHighlight">@color/colorPrimaryDark</item>
+        <item name="android:colorControlHighlight">@color/text_color</item>
     </style>
 
     <style name="search_view_style">
