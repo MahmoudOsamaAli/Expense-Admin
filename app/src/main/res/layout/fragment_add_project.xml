@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginBottom="65dp"
+    android:background="@color/text_color"
+    android:elevation="6dp"
+    >
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="8dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/header_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:drawableStart="@drawable/ic_format_list_bulleted_black_24dp"
+                android:drawableLeft="@drawable/ic_format_list_bulleted_black_24dp"
+                android:drawablePadding="16dp"
+                android:text="@string/new_project_txt"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/border1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/border1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="@color/gray_light"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/header_text" />
+
+            <ImageView
+                android:id="@+id/add_button"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/ic_plus_circle_purple"
+                app:layout_constraintStart_toStartOf="@id/add_photo_text"
+                app:layout_constraintTop_toBottomOf="@id/photo_details" />
+
+            <TextView
+                android:id="@+id/add_photo_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/add_photo_text"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/text_header"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/select_category_text"
+                app:layout_constraintTop_toBottomOf="@id/select_category_text" />
+
+            <TextView
+                android:id="@+id/photo_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginEnd="16dp"
+                android:textSize="@dimen/text_content"
+                android:textColor="@color/gray_dark"
+                android:text="@string/add_photo_details"
+                app:layout_constraintEnd_toEndOf="@id/select_category_text"
+                app:layout_constraintStart_toStartOf="@id/select_category_text"
+                app:layout_constraintTop_toBottomOf="@id/add_photo_text" />
+
+            <TextView
+                android:id="@+id/select_category_text"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_margin="16dp"
+                android:background="@drawable/search_view_background"
+                android:drawableEnd="@drawable/ic_arrow_right"
+                android:drawableRight="@drawable/ic_arrow_right"
+                android:gravity="center_vertical"
+                android:padding="8dp"
+                android:textSize="@dimen/text_content"
+                android:text="@string/select_a_category"
+                android:textColor="@color/gray_dark"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/border1"
+                />
+
+            <EditText
+                android:id="@+id/title_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_margin="16dp"
+                android:background="@drawable/search_view_background"
+                android:gravity="center_vertical"
+                android:padding="8dp"
+                android:focusable="false"
+                android:text="@string/title_text"
+                android:textSize="@dimen/text_content"
+                android:textColor="@color/gray_dark"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/add_button"
+                tools:text="Title" />
+            <TextView
+                android:id="@+id/where_you_locate_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/title_edit_text"
+                app:layout_constraintStart_toStartOf="@id/title_edit_text"
+                android:text="@string/where_you_located_text"
+                android:layout_marginTop="16dp"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/text_header"
+                android:textStyle="bold"
+                />
+            <TextView
+                android:id="@+id/connect_with_google"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/where_you_locate_text"
+                app:layout_constraintStart_toStartOf="@id/title_edit_text"
+                android:text="Add location with google maps"
+                android:textColor="@color/gray_dark"
+                android:textSize="@dimen/text_content"
+                />
+
+            <ImageView
+                android:id="@+id/add_location_image"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/ic_plus_circle_purple"
+                app:layout_constraintTop_toBottomOf="@id/connect_with_google"
+                app:layout_constraintStart_toStartOf="@id/where_you_locate_text"
+                />
+            <EditText
+                android:id="@+id/website_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_margin="16dp"
+                android:background="@drawable/search_view_background"
+                android:gravity="center_vertical"
+                android:padding="8dp"
+                android:focusable="false"
+                android:textSize="@dimen/text_content"
+                android:text="@string/website_text"
+                android:textColor="@color/gray_dark"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/add_location_image"
+                />
+            <EditText
+                android:id="@+id/phone_number_text"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_margin="16dp"
+                android:background="@drawable/search_view_background"
+                android:gravity="center_vertical"
+                android:padding="8dp"
+                android:focusable="false"
+                android:text="@string/phone_number_text"
+                android:textColor="@color/gray_dark"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:textSize="@dimen/text_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/website_edit_text"
+                />
+            <Button
+                android:id="@+id/post_ad_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:textAllCaps="false"
+                app:layout_constraintTop_toBottomOf="@id/phone_number_text"
+                android:text="@string/post_ad_text"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</androidx.cardview.widget.CardView>

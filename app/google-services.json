@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1008621442961",
+    "firebase_url": "https://expense-admin.firebaseio.com",
+    "project_id": "expense-admin",
+    "storage_bucket": "expense-admin.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1008621442961:android:6f01f15d66527587fcac30",
+        "android_client_info": {
+          "package_name": "com.example.expenseadmin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1008621442961-f4dhjaadmcos13p7hvb4sjh5ovbhj30k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.expenseadmin",
+            "certificate_hash": "c305cc9ae68a712f481122b5f77d315802ecffe6"
+          }
+        },
+        {
+          "client_id": "1008621442961-mgdc9bg43gb8rqr8205ksko3l58h5ol3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkuhj0KeApcryZ23fCBg19Rvq7EoXvjtk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1008621442961-mgdc9bg43gb8rqr8205ksko3l58h5ol3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

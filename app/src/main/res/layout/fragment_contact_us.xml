@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:drawableStart="@drawable/ic_gmail"
+        android:drawableLeft="@drawable/ic_gmail"
+        android:drawablePadding="16dp"
+        android:focusable="true"
+        android:padding="18dp"
+        android:text="Send to us on Gmail"
+        android:textColor="@color/text_color"
+        android:textSize="@dimen/text_header" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@drawable/border_shadow"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:drawableStart="@drawable/ic_facebook"
+        android:drawableLeft="@drawable/ic_facebook"
+        android:drawablePadding="16dp"
+        android:focusable="true"
+        android:padding="18dp"
+        android:text="Follow us on Facebook"
+        android:textColor="@color/text_color"
+        android:textSize="@dimen/text_header" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@drawable/border_shadow"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:drawableStart="@drawable/ic_twitter"
+        android:drawableLeft="@drawable/ic_twitter"
+        android:drawablePadding="16dp"
+        android:focusable="true"
+        android:padding="18dp"
+        android:text="Follow us on twitter"
+        android:textColor="@color/text_color"
+        android:textSize="@dimen/text_header" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@drawable/border_shadow"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:drawableStart="@drawable/ic_link"
+        android:drawableLeft="@drawable/ic_link"
+        android:drawablePadding="16dp"
+        android:focusable="true"
+        android:padding="18dp"
+        android:text="Visit our website"
+        android:textColor="@color/text_color"
+        android:textSize="@dimen/text_header" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@drawable/border_shadow"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:drawableStart="@drawable/ic_youtube"
+        android:drawableLeft="@drawable/ic_youtube"
+        android:drawablePadding="16dp"
+        android:focusable="true"
+        android:padding="18dp"
+        android:text="Watch us on youtube"
+        android:textColor="@color/text_color"
+        android:textSize="@dimen/text_header" />
+</LinearLayout>
