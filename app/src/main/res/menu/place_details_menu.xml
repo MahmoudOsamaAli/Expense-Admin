@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/place_details_edit_item_menu"
+        android:icon="@drawable/ic_mode_edit_white_24dp"
+        android:title="@string/edit_place_nav_lbl"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/place_details_favorite_item_menu"
+        android:icon="@drawable/ic_favorite_border_white_24dp"
+        android:title="@string/title_favorite"
+        app:showAsAction="always" />
+</menu>

@@ -10,30 +10,40 @@
     <string name="where_we_located">Where We Located</string>
     <string name="rate_us">Rate Us</string>
     <string name="rating_word">Rating</string>
-    <string name="rating_details">Rated 8.8 out of 10 based on 13,500 visitors</string>
+    <string name="rating_details" translatable="false">Rated 8.8 out of 10 based on 13,500 visitors</string>
     <string name="likes_format">% likes</string>
     <string name="okay_format">% okay</string>
     <string name="dislikes_format">% dislikes</string>
-    <string name="open_drawer">open drawer</string>
-    <string name="close_drawer">close drawer</string>
+    <string name="open_drawer" translatable="false">open drawer</string>
+    <string name="close_drawer" translatable="false">close drawer</string>
     <string name="add_project">Add a Project</string>
     <string name="about_us">About Us</string>
-    <string name="english">English</string>
-    <string name="arabic">عربي</string>
-    <string name="profile_name">Ali Ussama</string>
-    <string name="profile_mail">aliUssama@gmail.com</string>
-    <string name="phone_number">01097170941</string>
-    <string name="profile_country">Egypt</string>
+    <string name="english" translatable="false">English</string>
+    <string name="arabic" translatable="false">العربية</string>
+    <string name="profile_name" translatable="false">Ali Ussama</string>
+    <string name="profile_mail" translatable="false">aliUssama@gmail.com</string>
+    <string name="phone_number" translatable="false">01097170941</string>
+    <string name="profile_country" translatable="false">Egypt</string>
     <string name="new_project_txt">New Project</string>
     <string name="add_photo_text">Add Photo</string>
-    <string name="add_photo_details">Supported formats are .jpg,.gif and .png . Each picture must not exceed 5 Mb</string>
+    <string name="add_photo_details">Supported formats are .jpg and .png</string>
     <string name="select_a_category">Select a Category</string>
     <string name="title_text">Title</string>
     <string name="where_you_located_text">Where you located</string>
-    <string name="website_text">Website</string>
+    <string name="add_location">Add Locations</string>
+    <string name="facebook_page_url">Facebook page link</string>
+    <string name="twitter_page_link">Twitter page link</string>
+    <string name="website_text">Website link</string>
     <string name="phone_number_text">Phone number</string>
-    <string name="post_ad_text">Post Ad</string>
-    <string name="web_client_id" translatable="false">1008621442961-mgdc9bg43gb8rqr8205ksko3l58h5ol3.apps.googleusercontent.com</string>
+    <string name="add_new_place_btn">Create New Place</string>
+    <!--    <string name="web_client_id" translatable="false">1008621442961-mgdc9bg43gb8rqr8205ksko3l58h5ol3.apps.googleusercontent.com</string>-->
+
+    <string name="web_client_id" translatable="false">597970624733-iams1ops2gfg2n391pl1advgr1sn6g86.apps.googleusercontent.com</string>
+    <string name="client_secret" translatable="false">wGuMOzzL65mdZHl-iWMhqocB</string>
+
+    <string name="here_app_code" translatable="false">A6nhvmYUla89AOo_la4voA</string>
+    <string name="here_app_id" translatable="false">OP8CUKtC1qXxcxK3J5xV</string>
+    <string name="here_license_key" translatable="false">e26iVdcq+zreHVPM+v+SS4fDENqphFzaAO/YT3MU0yrWX5lpIgDT+1FZfsAgHciF+nexBX4xnlMsIMMhReGitTE/H8/ltwe+e0Hqy3UFrgZDn02d69uafDfUENJnFPq3ErhRz/qqo3pVKZ2AA+h9/yvPOqpgQLmRncN0cxXzRY7rloeiLhSFKWDbup67DnAFZlhTHmiyM6fxBBbOsANCmtx5O1u7Pq50x7hbplBrTN8yyP9xCx2wbgTlKddu1p6fMmiv/leBNMqlKoZk2GoKdTR2zxVDk7Fd0IabWNZcNP09pu2N/w7rImdeF6oCyzrBpfIF1pTaVAoCj0apomn+dSkUGOZsQTfrhDUnbSPS7y6HpsaXhEEP9P94yzNdWHGNSIOTTXmBKXgwH+ocJK/4cUc/P0zUvCF+uyvqb9JDK2vN4tmDMSq5KtrFkhLSEIYVVAKxRK35nUj/JrfkJhicCHVCiW7ZZNfs8PNRzx5+2+1wwkHpMdzigKeoJdmQp2/jLchDeAJ+zuIpYMC9wsN5Ccmxe4LfsWIqy2j42g6RlZu+h7jurn74a5kNrYA5tWmmh+WDaEJkqezpn7e8TH4gFt6nmvI2WNoc1G7xAd7pkgmrbdOzlUX4kOkLC274QVPJncJ26mXmd6b1WqJIk+mwNOQafQ9kKdrskr0q6lF0sOY=</string>
 
     <string name="facebook_app_id" translatable="false">406032423406906</string>
     <string name="fb_login_protocol_scheme" translatable="false">fb406032423406906</string>
@@ -49,7 +59,7 @@
     <string name="loading">Loading…</string>
     <string name="don_t_have_an_account_sign_up">Don\'t have account, yet? Sign up!</string>
     <string name="login">Login</string>
-    <string name="enter_first_name_and_last_name">First Name And Last Name</string>
+    <string name="enter_first_name_and_last_name">First name And Last name</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="continue_with_google">Continue with google</string>
     <string name="sign_up_with_facebook">Sign up with facebook</string>
@@ -57,6 +67,61 @@
     <string name="back">back</string>
     <string name="gender_text">Male</string>
     <string name="search_title">Search</string>
-    <string name="search_hint">type your search request</string>
+    <string name="search_hint">search…</string>
+    <string name="add_place_nav_lbl">Add Place</string>
+    <string name="edit_place_nav_lbl">Edit Place</string>
+    <string name="requests_nav_lbl">Requests</string>
+    <string name="create_admin_nav_lbl">Create Admin</string>
+
+    <string name="coffee">Cafe</string>
+    <string name="electronics">Electronics</string>
+    <string name="restaurant">Restaurant</string>
+    <string name="clothes">Clothes</string>
+    <string name="beauty">Beauty</string>
+    <string name="others">Others</string>
+    <string name="place_name">Place Name</string>
+    <string name="oops_wait_for_more_places_to_visit">wait for more places to visit</string>
+    <string name="add_location_with_maps">Add location via maps</string>
+    <string name="city">City</string>
+    <string name="country">Country</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="Confirm_location">Confirm location</string>
+    <string name="select_location_first">Please select location on map!</string>
+    <string name="choose_location">Choose Location</string>
+    <string name="close_bottom_sheet">Close</string>
+    <string name="undo_marker">Undo Marker</string>
+    <string name="please_choose_country">Please Choose Country</string>
+    <string name="are_you_sure_with_this_location">Add this location information?</string>
+    <string name="yes">Yes</string>
+    <string name="cancel">Cancel</string>
+    <string name="are_you_sure_you_want_to_delete_this_location">Delete this location?</string>
+    <string name="are_you_sure_you_want_to_delete_this_photo">Delete this Photo?</string>
+    <string name="category">Category</string>
+    <string name="please_choose_category">Please Choose Category!</string>
+    <string name="please_choose_images">Please Add Image !</string>
+    <string name="website_lbl" translatable="false">https://www.website.com/</string>
+    <string name="twitter_lbl" translatable="false">https://twitter.com/</string>
+    <string name="facebook_url" translatable="false">https://m.facebook.com/</string>
+    <string name="place_description">Add Description…</string>
+    <string name="saving">Saving…</string>
+    <string name="place_add_successfully">Place added successfully!</string>
+    <string name="error_adding_place">Error, Please try again!</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+    <string name="more">Read more</string>
+    <string name="description_test">A nice place to visit and hangout with friends where you can enjoy cool music and great coffee</string>
+    <string name="place_name_test">Garden city Cafe</string>
+    <string name="social_media">Social Media</string>
+    <string name="place_intent_lbl" translatable="false">place</string>
+    <string name="edit_place_btn">Save Changes</string>
+    <string name="place_updated_successfully">Place updated successfully!</string>
+    <string name="failed_to_delete_check_network">Failed, Check your network connection</string>
+    <string name="delete">Delete</string>
+    <string name="place_deleted_successfully">Place deleted successfully!</string>
+    <string name="deleting">Deleting…</string>
+    <string name="kilometer">Km</string>
+    <string name="mile">mile</string>
+    <string name="instagram_lbl">https://instagram.com/</string>
+    <string name="instagram_hint">Instagram page link</string>
 
 </resources>

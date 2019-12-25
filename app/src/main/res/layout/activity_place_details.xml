@@ -1,237 +1,347 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/place_details_activity_parent"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:fitsSystemWindows="true">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/place_details_place_app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/white"
-        android:fitsSystemWindows="true">
-        <ImageView
-            android:id="@+id/contact_us_image"
-            android:layout_width="@dimen/logo_width"
-            android:layout_height="@dimen/logo_height"
-            android:background="?android:attr/selectableItemBackground"
-            android:clickable="true"
-            android:focusable="true"
-            android:src="@drawable/ic_call"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/circle"
-            />
-        <com.mancj.slimchart.SlimChart
-            android:id="@+id/slimChart"
-            android:layout_width="90dp"
-            android:layout_height="90dp"
-            android:layout_margin="8dp"
-            app:layout_constraintStart_toStartOf="@id/rating_details"
-            app:layout_constraintTop_toBottomOf="@id/rating_details"
-            app:roundedEdges="true"
-            app:strokeWidth="8dp"
-            app:text="8.8"
-            app:textColor="@color/text_color" />
-        <LinearLayout
-            android:id="@+id/seek_bars_linear"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintTop_toTopOf="@id/slimChart"
-            app:layout_constraintEnd_toEndOf="parent"
-            >
-            <TextView
-                android:id="@+id/likes_text"
-                android:layout_width="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Light">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/toolbar_layout_place_details"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_250sdp"
+            app:contentScrim="?attr/colorPrimary"
+            app:expandedTitleGravity="bottom"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/text_content"
-                android:textColor="@color/text_color"
-                android:drawableStart="@drawable/ic_likes"
-                android:layout_marginBottom="4dp"
-                android:layout_marginTop="4dp"
-                android:drawableLeft="@drawable/ic_likes"
-                android:drawablePadding="4dp"/>
-            <SeekBar
-                android:id="@+id/seekBar_likes"
-                android:layout_width="@dimen/seekbar_width"
-                android:layout_height="@dimen/seekbar_height"
-                android:progressDrawable="@drawable/seekbar_style"
-                android:thumb="@android:color/transparent" />
-            <TextView
-                android:id="@+id/okays_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/text_content"
-                android:textColor="@color/text_color"
-                android:drawableLeft="@drawable/ic_okays"
-                android:layout_marginBottom="4dp"
-                android:layout_marginTop="4dp"
-                android:drawableStart="@drawable/ic_okays"
-                android:drawablePadding="4dp"/>
-            <SeekBar
-                android:id="@+id/seekBar_okays"
-                android:layout_width="@dimen/seekbar_width"
-                android:layout_height="@dimen/seekbar_height"
-                android:progressDrawable="@drawable/seekbar_style"
-                android:thumb="@android:color/transparent"
-                 />
-            <TextView
-                android:id="@+id/dislikes_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/text_content"
-                android:textColor="@color/text_color"
-                android:drawableStart="@drawable/ic_dislikes"
-                android:layout_marginBottom="4dp"
-                android:layout_marginTop="4dp"
-                android:drawableLeft="@drawable/ic_dislikes"
-                android:drawablePadding="4dp"/>
-            <SeekBar
-                android:id="@+id/seekBar_dislikes"
-                android:layout_width="@dimen/seekbar_width"
-                android:layout_height="@dimen/seekbar_height"
-                android:progressDrawable="@drawable/seekbar_style"
-                android:thumb="@android:color/transparent"
-                 />
-        </LinearLayout>
-        <TextView
-            android:id="@+id/rate_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:text="@string/rating_word"
-            android:textColor="@color/text_color"
-            android:textStyle="bold"
-            android:textSize="@dimen/text_header"
-            app:layout_constraintTop_toBottomOf="@id/contact_us_image"
-            app:layout_constraintStart_toStartOf="parent" />
-        <TextView
-            android:id="@+id/rating_details"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/rating_details"
-            android:textColor="@color/text_color"
-            android:textSize="@dimen/text_content"
-            app:layout_constraintStart_toStartOf="@id/rate_text"
-            app:layout_constraintTop_toBottomOf="@id/rate_text" />
-        <TextView
-            android:id="@+id/where_we_located"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="@string/where_we_located"
-            android:textColor="@color/text_color"
-            android:textSize="@dimen/text_header"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/rate_buttons" />
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/RV_places_location"
+                app:layout_collapseMode="parallax">
+
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/view_pager"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/gray_dark"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <me.relex.circleindicator.CircleIndicator
+                    android:id="@+id/circle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    app:ci_drawable="@drawable/circleindicator_round"
+                    app:ci_drawable_unselected="@color/white"
+                    app:layout_constraintBottom_toBottomOf="@id/view_pager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar_place_details"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/Widget.AppCompat.PopupMenu.Overflow"
+                app:titleTextColor="@color/white" />
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/place_details_activity_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/where_we_located" />
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/view_pager"
-            android:layout_width="match_parent"
-            android:layout_height="220dp"
-            android:background="@android:color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-        <me.relex.circleindicator.CircleIndicator
-            android:id="@+id/circle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:padding="16dp"
-            app:ci_drawable="@drawable/circleindicator_round"
-            app:ci_drawable_unselected="@color/gray_dark"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/view_pager" />
-        <LinearLayout
-            android:id="@+id/rate_buttons"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/seek_bars_linear"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_margin="16dp"
-            android:orientation="horizontal"
-            >
+            android:layout_marginTop="@dimen/_16sdp"
+            app:layout_scrollFlags="scroll">
+
             <TextView
-                android:layout_width="0dp"
-                android:layout_weight="3"
+                android:id="@+id/place_details_activity_description"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/rate_us"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:layout_marginBottom="@dimen/_8sdp"
+                android:text="@string/description_test"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/_12ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/rate_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:text="@string/rating_word"
+                android:textColor="@color/text_color"
                 android:textSize="@dimen/text_header"
                 android:textStyle="bold"
-                android:textColor="@color/text_color"/>
-            <ImageView
-                android:id="@+id/like_button"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="25dp"
-                android:src="@drawable/ic_likes" />
-            <ImageView
-                android:id="@+id/okay_button"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_okays"
-                />
-            <ImageView
-                android:id="@+id/dislike_button"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_dislikes"
-                />
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/websites"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/RV_places_location"
-            app:layout_constraintStart_toStartOf="@id/rate_text"
-            android:orientation="horizontal">
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/place_details_activity_description" />
+
             <TextView
+                android:id="@+id/rating_details"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Visit Us on "
-                android:textSize="@dimen/text_header"
+                android:text="@string/rating_details"
                 android:textColor="@color/text_color"
+                android:textSize="@dimen/text_content"
+                app:layout_constraintStart_toStartOf="@id/rate_text"
+                app:layout_constraintTop_toBottomOf="@id/rate_text" />
+
+            <com.mancj.slimchart.SlimChart
+                android:id="@+id/slimChart"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_margin="8dp"
+                app:layout_constraintStart_toStartOf="@id/rating_details"
+                app:layout_constraintTop_toBottomOf="@id/rating_details"
+                app:roundedEdges="true"
+                app:strokeWidth="8dp"
+                app:text="8.8"
+                app:textColor="@color/text_color" />
+
+            <LinearLayout
+                android:id="@+id/seek_bars_linear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/slimChart">
+
+                <TextView
+                    android:id="@+id/likes_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="4dp"
+                    android:drawableStart="@drawable/ic_sentiment_satisfied_filled_24dp"
+                    android:drawablePadding="4dp"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/text_content" />
+
+                <ProgressBar
+                    android:id="@+id/seekBar_likes"
+                    android:layout_width="@dimen/seekbar_width"
+                    android:layout_height="@dimen/seekbar_height"
+                    android:paddingEnd="@dimen/_12sdp"
+                    android:paddingStart="@dimen/_12sdp"
+                    android:paddingLeft="@dimen/_12sdp"
+                    android:paddingRight="@dimen/_12sdp"
+                    style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
+                    android:indeterminate="false"
+                    android:progress="50"
+                    android:progressDrawable="@drawable/seekbar_style"
+                    android:thumb="@android:color/transparent" />
+
+                <TextView
+                    android:id="@+id/okays_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="4dp"
+                    android:drawableStart="@drawable/ic_sentiment_neutral_filled_24dp"
+                    android:drawablePadding="4dp"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/text_content" />
+
+                <ProgressBar
+                    android:id="@+id/seekBar_okays"
+                    android:layout_width="@dimen/seekbar_width"
+                    android:layout_height="@dimen/seekbar_height"
+                    android:paddingEnd="@dimen/_12sdp"
+                    android:paddingStart="@dimen/_12sdp"
+                    android:paddingLeft="@dimen/_12sdp"
+                    android:paddingRight="@dimen/_12sdp"
+                    style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
+                    android:indeterminate="false"
+                    android:progress="50"
+                    android:progressDrawable="@drawable/seekbar_style"
+                    android:thumb="@android:color/transparent" />
+
+                <TextView
+                    android:id="@+id/dislikes_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="4dp"
+                    android:drawableStart="@drawable/ic_sentiment_dissatisfied_filled_24dp"
+                    android:drawablePadding="4dp"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/text_content" />
+
+                <ProgressBar
+                    android:id="@+id/seekBar_dislikes"
+                    android:layout_width="@dimen/seekbar_width"
+                    android:layout_height="@dimen/seekbar_height"
+                    android:paddingEnd="@dimen/_12sdp"
+                    android:paddingStart="@dimen/_12sdp"
+                    android:paddingLeft="@dimen/_12sdp"
+                    android:paddingRight="@dimen/_12sdp"
+                    style="@style/Widget.MaterialProgressBar.ProgressBar.Horizontal"
+                    android:indeterminate="false"
+                    android:progress="50"
+                    android:progressDrawable="@drawable/seekbar_style"
+                    android:thumb="@android:color/transparent" />
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/where_we_located"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:text="@string/where_we_located"
+                android:textColor="@color/text_color"
+                android:textSize="@dimen/text_header"
                 android:textStyle="bold"
-                android:layout_gravity="center"
-                android:layout_marginEnd="24dp"
-                android:layout_marginRight="24dp" />
-            <ImageView
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:src="@drawable/ic_facebook"
-                android:background="?android:attr/selectableItemBackground"
-                android:clickable="true"
-                android:focusable="true"
-                android:padding="8dp"/>
-            <ImageView
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:src="@drawable/ic_youtube"
-                android:background="?android:attr/selectableItemBackground"
-                android:clickable="true"
-                android:focusable="true"
-                android:padding="8dp"/>
-            <ImageView
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:src="@drawable/ic_twitter"
-                android:background="?android:attr/selectableItemBackground"
-                android:clickable="true"
-                android:focusable="true"
-                android:padding="8dp"/>
-        </LinearLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+                app:layout_constraintStart_toStartOf="@+id/rate_text"
+                app:layout_constraintTop_toBottomOf="@id/seek_bars_linear" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/RV_places_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/where_we_located" />
+
+
+            <LinearLayout
+                android:id="@+id/rate_buttons"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/RV_places_location">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="@dimen/_8sdp"
+                    android:text="@string/rate_us"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_12ssp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/like_button"
+                    android:layout_width="@dimen/_24sdp"
+                    android:layout_height="@dimen/_24sdp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="@dimen/_12sdp"
+                    android:src="@drawable/ic_sentiment_satisfied_24px" />
+
+                <ImageView
+                    android:id="@+id/okay_button"
+                    android:layout_width="@dimen/_24sdp"
+                    android:layout_height="@dimen/_24sdp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="@dimen/_12sdp"
+                    android:src="@drawable/ic_sentiment_neutral_black_24dp" />
+
+                <ImageView
+                    android:id="@+id/dislike_button"
+                    android:layout_width="@dimen/_24sdp"
+                    android:layout_height="@dimen/_24sdp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_sentiment_dissatisfied_24px" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/websites"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:orientation="horizontal"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rate_buttons">
+
+                <ImageView
+                    android:id="@+id/place_details_activity_facebook"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_4sdp"
+                    android:src="@drawable/ic_facebook3" />
+
+
+                <ImageView
+                    android:id="@+id/place_details_activity_twitter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_4sdp"
+                    android:src="@drawable/ic_twitter3" />
+
+                <ImageView
+                    android:id="@+id/place_details_activity_instagram"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_4sdp"
+                    android:src="@drawable/ic_instagram2" />
+
+                <ImageView
+                    android:id="@+id/place_details_activity_web"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_4sdp"
+                    android:src="@drawable/ic_website_link3" />
+            </LinearLayout>
+
+            <!--            <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+            <!--                android:id="@+id/edit_fab"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:elevation="@dimen/_4sdp"-->
+            <!--                android:src="@drawable/ic_mode_edit_white_24dp"-->
+            <!--                app:layout_constraintBottom_toBottomOf="parent"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                tools:targetApi="lollipop" />-->
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/call_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/_8sdp"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:elevation="@dimen/_4sdp"
+        android:focusable="true"
+        android:src="@drawable/ic_call_black_24dp"
+        app:layout_anchor="@id/place_details_place_app_bar"
+        app:layout_anchorGravity="bottom|end"
+        tools:targetApi="lollipop" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

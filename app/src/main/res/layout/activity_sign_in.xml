@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/parent"
+    android:background="@color/white"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.activities.signInUp.SignInActivity">
+    android:layout_height="match_parent">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -38,13 +38,13 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <LinearLayout
-                android:id="@+id/rellay1"
+                android:id="@+id/login_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/logo"
                 android:background="?android:attr/selectableItemBackground"
                 android:orientation="vertical"
-                android:visibility="gone"
+                android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/logo">
@@ -134,7 +134,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/rellay2"
+                android:id="@+id/signup_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:visibility="gone"
@@ -290,7 +290,6 @@
                             android:background="?android:attr/selectableItemBackground"
                             android:clickable="true"
                             android:drawableStart="@drawable/ic_facebook_white"
-                            android:drawableLeft="@drawable/ic_facebook_white"
                             android:focusable="true"
                             android:padding="8dp"
                             android:text="@string/sign_up_with_facebook"
@@ -313,7 +312,6 @@
                             android:background="?android:attr/selectableItemBackground"
                             android:clickable="true"
                             android:drawableStart="@drawable/ic_twitter_white"
-                            android:drawableLeft="@drawable/ic_twitter_white"
                             android:focusable="true"
                             android:padding="8dp"
                             android:text="@string/sign_up_with_twitter"
@@ -328,7 +326,6 @@
                         android:background="?android:attr/selectableItemBackground"
                         android:clickable="true"
                         android:drawableStart="@drawable/ic_arrow_left"
-                        android:drawableLeft="@drawable/ic_arrow_left"
                         android:focusable="true"
                         android:padding="8dp"
                         android:text="@string/back"
