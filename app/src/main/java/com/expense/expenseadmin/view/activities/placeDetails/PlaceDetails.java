@@ -54,6 +54,7 @@ import me.relex.circleindicator.CircleIndicator;
 public class PlaceDetails extends AppCompatActivity implements PlaceDetailsView, View.OnClickListener {
 
     private static final int CALL_REQUEST_CODE = 1;
+    private static final int LOCATION_REQUEST_CODE = 2;
     @BindView(R.id.view_pager)
     ViewPager viewPager;
 
@@ -130,6 +131,8 @@ public class PlaceDetails extends AppCompatActivity implements PlaceDetailsView,
     PlaceModel place;
 
     PlaceDetails mCurrent;
+    private LocationAdapter locationAdapter;
+
     private static final String TAG = "PlaceDetails";
 
     @Override
@@ -220,20 +223,25 @@ public class PlaceDetails extends AppCompatActivity implements PlaceDetailsView,
 
     private void initLocation() {
         try {
-            Log.i(TAG, "initLocation: called");
-            fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
-            fusedLocationClient.getLastLocation()
-                    .addOnSuccessListener(this, location -> {
-                        // Got last known location. In some rare situations this can be null.
-                        if (location != null) {
-                            mCurrentLocation = location;
-                            Log.i(TAG, "onSuccess: location is not null");
-//                            calcDistances();
-                        }
-                    });
-            Log.i(TAG, "initLocation: out of the task : location = ");
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED || ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(mCurrent, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_REQUEST_CODE);
+            } else {
+
+                Log.i(TAG, "initLocation: called");
+                fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+                fusedLocationClient.getLastLocation()
+                        .addOnSuccessListener(this, location -> {
+                            // Got last known location. In some rare situations this can be null.
+                            if (location != null) {
+                                mCurrentLocation = location;
+                                Log.i(TAG, "onSuccess: location is not null");
+                                calcDistances();
+                            }
+                        });
+                Log.i(TAG, "initLocation: out of the task : location = ");
 //            calcDistances();
-            initLocationRV();
+                initLocationRV();
+            }
         } catch (Exception e) {
             e.printStackTrace();
             Log.i(TAG, "initLocation: catched an exception" + e.getMessage());
@@ -254,7 +262,10 @@ public class PlaceDetails extends AppCompatActivity implements PlaceDetailsView,
                     Log.i(TAG, "calcDistances(): distance = " + dist);
                 }
             }
-            initLocationRV();
+            if (locationAdapter != null) {
+                locationAdapter.notifyDataSetChanged();
+                locationAdapter.notifyDataChanged(distances);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -348,14 +359,9 @@ public class PlaceDetails extends AppCompatActivity implements PlaceDetailsView,
             Log.i(TAG, "initLocationRV(): is called");
             LinearLayoutManager manager = new LinearLayoutManager(this);
             recyclerView.setLayoutManager(manager);
-            LocationAdapter adapter = null;
-            if(distances != null) {
-                adapter = new LocationAdapter(this, place.getLocationModels(), distances, place.getName());
-            }else{
-                adapter = new LocationAdapter(this , place.getLocationModels() , place.getName());
-            }
-            Log.i(TAG, "initLocationRV: adapter size = " + adapter.getItemCount());
-            recyclerView.setAdapter(adapter);
+            locationAdapter = new LocationAdapter(this, place.getLocationModels(), distances, place.getName());
+            Log.i(TAG, "initLocationRV: adapter size = " + locationAdapter.getItemCount());
+            recyclerView.setAdapter(locationAdapter);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -586,6 +592,12 @@ public class PlaceDetails extends AppCompatActivity implements PlaceDetailsView,
         if (requestCode == CALL_REQUEST_CODE) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 callPhoneNo();
+            }
+        } else if (requestCode == LOCATION_REQUEST_CODE) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                initLocation();
+            }else{
+                initLocationRV();
             }
         }
     }

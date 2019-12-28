@@ -106,7 +106,6 @@
                     android:background="@color/fui_transparent"
                     android:gravity="center_vertical"
                     android:inputType="textUri"
-                    android:text="@string/facebook_url"
                     android:textColor="@color/colorPrimary"
                     android:textSize="@dimen/_12ssp" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -130,7 +129,6 @@
                     android:background="@color/fui_transparent"
                     android:gravity="center_vertical"
                     android:inputType="textUri"
-                    android:text="@string/twitter_lbl"
                     android:textColor="@color/colorPrimary"
                     android:textSize="@dimen/_12ssp" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -154,7 +152,6 @@
                     android:background="@color/fui_transparent"
                     android:gravity="center_vertical"
                     android:inputType="textUri"
-                    android:text="@string/instagram_lbl"
                     android:textColor="@color/colorPrimary"
                     android:textSize="@dimen/_10ssp" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -178,7 +175,6 @@
                     android:background="@color/fui_transparent"
                     android:gravity="center_vertical"
                     android:inputType="textUri"
-                    android:text="@string/website_lbl"
                     android:textColor="@color/colorPrimary"
                     android:textSize="@dimen/_10ssp" />
             </com.google.android.material.textfield.TextInputLayout>

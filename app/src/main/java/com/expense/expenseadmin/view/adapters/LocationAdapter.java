@@ -51,12 +51,21 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.MyHold
     public void onBindViewHolder(@NonNull LocationAdapter.MyHolder holder, int position) {
         holder.mStreet.setText(data.get(position).getStreet());
         holder.mCity.setText(data.get(position).getCity());
-        if(distances != null ) {
+        if (distances != null) {
             String distance = String.valueOf(distances.get(position));
             holder.mDistance.setText(distance);
+            holder.mDistance.setVisibility(View.VISIBLE);
+            holder.mDistanceLbl.setVisibility(View.VISIBLE);
+
+        } else {
+            holder.mDistance.setVisibility(View.GONE);
+            holder.mDistanceLbl.setVisibility(View.GONE);
         }
     }
-
+    public void notifyDataChanged(ArrayList<Double> mDistance){
+        this.distances = mDistance;
+        notifyDataSetChanged();
+    }
     @Override
     public int getItemCount() {
         return data.size();
@@ -69,6 +78,8 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.MyHold
         TextView mCity;
         @BindView(R.id.distance_value)
         TextView mDistance;
+        @BindView(R.id.distance_lbl)
+        TextView mDistanceLbl;
 
         MyHolder(@NonNull View itemView) {
             super(itemView);

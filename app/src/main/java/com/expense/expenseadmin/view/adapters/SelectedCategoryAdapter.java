@@ -46,7 +46,7 @@ public class SelectedCategoryAdapter extends RecyclerView.Adapter<SelectedCatego
             holder.mName.setText(data.get(position).getName());
             holder.mDescriptionTV.setText(data.get(position).getDescription());
             Picasso.get().load(data.get(position).getImagesURL().get(0)).into(holder.mImage);
-            setAnimation(holder.parent , position);
+//            setAnimation(holder.parent , position);
         } catch (Exception e) {
             e.printStackTrace();
         }

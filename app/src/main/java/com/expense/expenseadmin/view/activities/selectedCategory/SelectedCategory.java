@@ -5,9 +5,12 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
 import android.widget.ViewAnimator;
 
 import com.expense.expenseadmin.R;
@@ -111,10 +114,23 @@ public class SelectedCategory extends AppCompatActivity implements SelectedCateg
                 LinearLayoutManager manager = new LinearLayoutManager(this);
                 mRV.setLayoutManager(manager);
                 SelectedCategoryAdapter adapter = new SelectedCategoryAdapter(this, data);
+                setRecyclerAnimation();
                 mRV.setAdapter(adapter);
+
             } else {
                 viewAnimator.setDisplayedChild(1);
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void setRecyclerAnimation() {
+        try {
+            Context context = mRV.getContext();
+            LayoutAnimationController layoutAnimationController = AnimationUtils.loadLayoutAnimation(context, R.anim.layout_animation_fall_down);
+            mRV.setLayoutAnimation(layoutAnimationController);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
