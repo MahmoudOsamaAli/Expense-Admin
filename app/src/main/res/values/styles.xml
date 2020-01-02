@@ -8,7 +8,7 @@
         <item name="windowNoTitle">true</item>
         <item name="searchViewStyle">@style/ThemeOverlay.AppCompat.Light</item>
         <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
-        <item name="android:windowBackground">@drawable/splash_screen</item>
+<!--        <item name="android:windowBackground">@drawable/splash_screen</item>-->
         <item name="android:colorControlHighlight" tools:targetApi="lollipop">@color/text_color</item>
     </style>
 
@@ -17,7 +17,9 @@
         <item name="windowNoTitle">true</item>
         <item name="android:colorControlHighlight" tools:targetApi="lollipop">@color/text_color</item>
     </style>
-
+    <style name="DrawerStyle" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:activatedBackgroundIndicator">@drawable/drawer_item</item>
+    </style>
     <style name="search_view_style">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/search_view_height</item>

@@ -537,6 +537,7 @@ public class PlaceDetails extends AppCompatActivity implements PlaceDetailsView,
 //            return FACEBOOK_URL; //normal web url
 //        }
 //    }
+
     private void handleTwitterIV() {
         try {
             Intent facebookIntent = new Intent(Intent.ACTION_VIEW);
