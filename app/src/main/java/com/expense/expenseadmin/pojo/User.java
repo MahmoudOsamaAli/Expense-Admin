@@ -1,24 +1,43 @@
 package com.expense.expenseadmin.pojo;
 
 public class User {
+    private String uid;
+    private String name;
+    private String email;
+    private String tokenId;
 
-    private static String name;
-    private static String email;
+    public User() {
+    }
 
+    public String getUid() {
+        return uid;
+    }
 
-    public static String getName() {
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
+
+    public String getName() {
         return name;
     }
 
-    public static void setName(String mName) {
-        name = mName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public static String getEmail() {
+    public String getEmail() {
         return email;
     }
 
-    public static void setEmail(String mEmail) {
-        email = mEmail;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getTokenId() {
+        return tokenId;
+    }
+
+    public void setTokenId(String tokenId) {
+        this.tokenId = tokenId;
     }
 }

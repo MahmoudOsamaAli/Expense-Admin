@@ -21,13 +21,13 @@ public class MyPagerAdapter extends PagerAdapter {
 
     private Context mContext;
     private ArrayList<String> mData;
-    LayoutInflater mLayoutInflater;
+    private LayoutInflater mLayoutInflater;
     private static final String TAG = "MyPagerAdapter";
 
     public MyPagerAdapter(Context mContext, ArrayList<String> mData) {
         this.mContext = mContext;
         this.mData = mData;
-        mLayoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        this.mLayoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @NonNull
@@ -35,11 +35,12 @@ public class MyPagerAdapter extends PagerAdapter {
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
         View view = mLayoutInflater.inflate(R.layout.place_image_item, container, false);
         ImageView imageView = view.findViewById(R.id.place_images);
-//        imageView.setImageResource(mData.get(position).getmImage());
+
         Picasso.get().load(mData.get(position)).into(imageView);
         view.setOnClickListener(view1 -> {
             Intent i = new Intent(mContext, DisplayImage.class);
             i.putExtra("position", position);
+            i.putStringArrayListExtra("Images", mData);
             mContext.startActivity(i);
         });
         container.addView(view);

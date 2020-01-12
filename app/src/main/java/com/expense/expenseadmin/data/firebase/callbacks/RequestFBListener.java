@@ -1,4 +1,10 @@
 package com.expense.expenseadmin.data.firebase.callbacks;
 
-public class RequestFBListener {
+import com.expense.expenseadmin.pojo.Model.PlaceModel;
+
+import java.util.ArrayList;
+
+public interface RequestFBListener {
+
+    void onReadRequestFromFirestore(ArrayList<PlaceModel> requests);
 }

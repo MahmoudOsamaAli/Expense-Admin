@@ -1,6 +1,11 @@
 package com.expense.expenseadmin.Utilities;
 
 import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.Network;
+import android.net.NetworkCapabilities;
+import android.net.NetworkInfo;
+import android.os.Build;
 import android.util.Base64;
 import android.widget.Toast;
 
@@ -25,6 +30,38 @@ public class AppUtils {
             isValid = true;
         }
         return isValid;
+    }
+
+    public static boolean inNetwork(Context context) {
+        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (connectivityManager != null) {
+                Network nw = connectivityManager.getActiveNetwork();
+                NetworkCapabilities actNw = connectivityManager.getNetworkCapabilities(nw);
+                if (actNw != null) {
+                    if (actNw.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)) {
+                        return true;
+                    }
+                    if (actNw.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)) {
+                        return true;
+                    }
+                    //for other device how are able to connect with Ethernet
+                    return actNw.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET);
+                }
+            } else {
+                return false;
+            }
+        } else {
+            if (connectivityManager != null) {
+                NetworkInfo nwInfo = connectivityManager.getActiveNetworkInfo();
+                if (nwInfo != null) {
+                    return nwInfo.isConnected();
+                }
+            } else {
+                return false;
+            }
+        }
+        return false;
     }
 
     public static MaterialDialog showProgressDialog(Context context, String message) {

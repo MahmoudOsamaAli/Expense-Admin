@@ -11,6 +11,7 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.expense.expenseadmin.R;
 import com.expense.expenseadmin.pojo.Model.LocationModel;
@@ -25,13 +26,20 @@ import com.expense.expenseadmin.view.fragments.contactUs.ContactUsFragment;
 import com.expense.expenseadmin.view.fragments.favorites.FavoriteFragment;
 import com.expense.expenseadmin.view.fragments.notifications.NotificationsFragment;
 import com.expense.expenseadmin.view.fragments.profile.ProfileFragment;
+import com.expense.expenseadmin.view.fragments.requests.RequestToHomeCallback;
 import com.expense.expenseadmin.view.fragments.requests.RequestsFragment;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
+import com.google.firebase.messaging.FirebaseMessaging;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -49,7 +57,7 @@ import java.util.Objects;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class HomeActivity extends AppCompatActivity implements HomeActivityListener {
+public class HomeActivity extends AppCompatActivity implements HomeActivityListener, RequestToHomeCallback {
 
     @BindView(R.id.toolbar_home)
     Toolbar toolbar;
@@ -81,10 +89,40 @@ public class HomeActivity extends AppCompatActivity implements HomeActivityListe
                 setFragments(new HomeFragment(), AnimationStates.BOTTOM_TO_TOP);
             }
 
+            initFirebaseInstanceToken();
+
             initLocation();
             //calling init fun
             init();
         } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void initFirebaseInstanceToken() {
+        try{
+            FirebaseInstanceId.getInstance().getInstanceId()
+                    .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                            if (!task.isSuccessful()) {
+                                Log.w(TAG, "getInstanceId failed", task.getException());
+                                return;
+                            }
+
+                            if (task.getResult() != null) {
+                                // Get new Instance ID token
+                                String token = task.getResult().getToken();
+
+                                // Log and toast
+                                String msg = "TokenId = " + token;
+                                Log.d(TAG, msg);
+//                                Toast.makeText(HomeActivity.this, msg, Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+
+        }catch (Exception e){
             e.printStackTrace();
         }
     }
@@ -105,6 +143,25 @@ public class HomeActivity extends AppCompatActivity implements HomeActivityListe
         }
     }
 
+    @Override
+    public void setRequestsCount(int requestCount) {
+
+        runOnUiThread(() -> {
+            try{
+                String count;
+                if (requestCount > 99) {
+                    count = requestCount + "+";
+                }else{
+                    count = String.valueOf(requestCount);
+                }
+                requestsCount.setText(count);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        });
+
+    }
+
     public enum AnimationStates {
         LEFT_TO_RIGHT, RIGHT_TO_LEFT, BOTTOM_TO_TOP
     }
@@ -113,6 +170,9 @@ public class HomeActivity extends AppCompatActivity implements HomeActivityListe
         try {
             //initializing views
             ButterKnife.bind(this);
+
+            initFCM();
+
 
             //initializing context
             mCurrent = HomeActivity.this;
@@ -130,10 +190,28 @@ public class HomeActivity extends AppCompatActivity implements HomeActivityListe
             //initializing bottom navigation
             bottomNavConfig();
 
+            checkRequest();
             //reading data from firebase
 //            presenter.readPlaceByCategoryFromFireStore();
 
         } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void checkRequest() {
+        boolean request = getIntent().getBooleanExtra(getString(R.string.requests_nav_lbl),false);
+
+        if (request){
+            setFragments(new RequestsFragment(this),AnimationStates.RIGHT_TO_LEFT);
+        }
+    }
+
+    private void initFCM() {
+        try{
+            FirebaseMessaging.getInstance().setAutoInitEnabled(true);
+
+        }catch (Exception e){
             e.printStackTrace();
         }
     }
@@ -235,7 +313,7 @@ public class HomeActivity extends AppCompatActivity implements HomeActivityListe
                     case R.id.requests_nav:// Requests
                         setActionBarTitle(getString(R.string.requests_nav_lbl));
                         if (currFragment instanceof RequestsFragment) break;
-                        setFragments(RequestsFragment.newInstance(), states);
+                        setFragments(new RequestsFragment(this), AnimationStates.RIGHT_TO_LEFT);
                         break;
 
                     case R.id.about_us_nav:// Place

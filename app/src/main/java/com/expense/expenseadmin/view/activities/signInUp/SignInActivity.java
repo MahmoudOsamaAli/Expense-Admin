@@ -18,8 +18,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.expense.expenseadmin.PrefManager;
 import com.expense.expenseadmin.R;
 import com.expense.expenseadmin.Utilities.AppUtils;
+import com.expense.expenseadmin.pojo.User;
 import com.expense.expenseadmin.view.activities.Home.HomeActivity;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
@@ -43,13 +45,14 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.auth.OAuthProvider;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import java.util.Arrays;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class SignInActivity extends AppCompatActivity implements View.OnClickListener {
+public class SignInActivity extends AppCompatActivity implements View.OnClickListener, SignInListener {
 
     private static final String TAG = "SignInActivity";
     private static final int RC_SIGN_IN = 1;
@@ -118,6 +121,9 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
         }
     };
 
+    private SignInPresenter mPresenter;
+    private SignInActivity mCurrent;
+    PrefManager mPrefManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -134,6 +140,9 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
 
     private void init() {
         try {
+            mCurrent = SignInActivity.this;
+            mPresenter = new SignInPresenter(mCurrent, this);
+
             mAuth = FirebaseAuth.getInstance();
             logInButton.setOnClickListener(this);
             signUpTxt.setOnClickListener(this);
@@ -141,6 +150,7 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
             mGoogleButton.setOnClickListener(this);
             fbLogIn.setOnClickListener(this);
             mNormalSignUp.setOnClickListener(this);
+            mPrefManager = new PrefManager(this);
 
             mConfirmPasswordEditText.addTextChangedListener(new TextWatcher() {
                 @Override
@@ -319,8 +329,13 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                         try {
                             if (task.isSuccessful()) {
                                 Log.i(TAG, "signInWithCredential:success");
-                                startActivity(new Intent(SignInActivity.this, HomeActivity.class));
-                                finish();
+//                        String m = "message";
+//                        Intent i = new Intent(SignInActivity.this, HomeActivity.class);
+//                        i.putExtra("message", m);
+//                        startActivity(i);
+//                        finish();
+                                FirebaseUser user = mAuth.getCurrentUser();
+                                updateUI(user);
                             } else {
                                 Log.i(TAG, "signInWithCredential:failure", task.getException());
                                 Toast.makeText(SignInActivity.this, "Authentication failed.",
@@ -342,11 +357,13 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
                         try {
                             if (task.isSuccessful()) {
                                 Log.i(TAG, "signInWithCredential:success");
-                                String m = "message";
-                                Intent i = new  Intent(SignInActivity.this, HomeActivity.class);
-                                i.putExtra("message", m);
-                                startActivity(i);
-                                finish();
+//                        String m = "message";
+//                        Intent i = new Intent(SignInActivity.this, HomeActivity.class);
+//                        i.putExtra("message", m);
+//                        startActivity(i);
+//                        finish();
+                                FirebaseUser user = mAuth.getCurrentUser();
+                                updateUI(user);
                             } else {
                                 Log.i(TAG, "signInWithCredential:failure", task.getException());
                                 Toast.makeText(SignInActivity.this, "Authentication failed.",
@@ -541,17 +558,63 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
 
         try {
             if (user != null) {
-                //TODO save user data into shared preferences
-                String m = "message";
-                Intent i = new  Intent(SignInActivity.this, HomeActivity.class);
-                i.putExtra("message", m);
-                startActivity(i);
+                Log.i(TAG, "updateUI(): FirebaseUser != null");
 
-                // Start home activity
-                startActivity(new Intent(SignInActivity.this, HomeActivity.class));
-                finish();
+                User newUser = new User();
+                newUser.setUid(user.getUid());
+                newUser.setName(user.getDisplayName());
+                newUser.setEmail(user.getEmail());
+                newUser.setTokenId(FirebaseInstanceId.getInstance().getToken());
+
+                //TODO save user data into shared preferences
+                mPrefManager.saveString(PrefManager.USER_ID, user.getUid());
+                mPrefManager.saveString(PrefManager.USER_TOKEN, newUser.getTokenId());
+                mPrefManager.saveString(PrefManager.USER_NAME, newUser.getTokenId());
+
+                Log.i(TAG, "updateUI(): user ID: " + user.getUid() + " saved in sharedPreference");
+                Log.i(TAG, "updateUI(): user ID: " + user.getDisplayName() + " saved in sharedPreference");
+
+                if (user.getEmail() != null) {
+                    mPrefManager.saveString(PrefManager.USER_EMAIL, user.getEmail());
+                    Log.i(TAG, "updateUI(): user email: " + user.getEmail());
+                }
+
+                if (user.getPhoneNumber() != null) {
+                    mPrefManager.saveString(PrefManager.USER_PHONE, user.getPhoneNumber());
+                    Log.i(TAG, "updateUI(): user phone: " + user.getPhoneNumber());
+                }
+
+                if (AppUtils.inNetwork(mCurrent)) {
+                    if (mPresenter != null) {
+                        Log.i(TAG, "updateUI(): saving user into firestore");
+                        mPresenter.saveUserIntoFireStore(newUser);
+                    }
+                }else{
+                    AppUtils.showAlertDialog(mCurrent,getString(R.string.check_network_connection));
+                }
             }
 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onSaveNewUser(boolean status, Throwable t) {
+        try {
+            Log.e(TAG, "onSaveNewUser(): is called");
+            if (!status) {
+                Log.e(TAG, "onSaveNewUser(): status = false");
+                if (t != null) {
+                    t.printStackTrace();
+                } else {
+                    Log.e(TAG, "onSaveNewUser(): process is canceled");
+                }
+            } else {
+                Log.d(TAG, "onSaveNewUser(): status = true");
+                Log.d(TAG, "onSaveNewUser(): user saved into firestore");
+            }
+            finish();
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -38,7 +38,7 @@ public class DBConfig {
 
     /* Places Table...*/
     static class PlacesTable implements BaseColumns {
-        static final String TABLE_NAME = "LocationsTable";
+        static final String TABLE_NAME = "PlacesTable";
         static final String COLUMN_ID = "ID";
         static final String COLUMN_Name = "Name";
         static final String COLUMN_CATEGORY = "Category";
@@ -54,7 +54,7 @@ public class DBConfig {
 
     /* Places Table...*/
     static class RequestsTable implements BaseColumns {
-        static final String TABLE_NAME = "LocationsTable";
+        static final String TABLE_NAME = "RequestsTable";
         static final String COLUMN_ID = "ID";
         static final String COLUMN_User_Name = "UserName";
         static final String COLUMN_DATE = "Date";

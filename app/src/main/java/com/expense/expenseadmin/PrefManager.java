@@ -1,4 +1,4 @@
-package com.company.mawarees;
+package com.expense.expenseadmin;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -6,15 +6,14 @@ import android.preference.PreferenceManager;
 
 public class PrefManager {
 
+
     public static final String KEY_HEADS = "pref_heads";
-    public static final String KEY_ONE_GROUP = "pref_one_group";
-    public static final String KEY_GROUP_RELATION = "pref_group_relation";
-    public static final String KEY_NEW_PROBLEM_ORIGIN = "pref_new_problem_origin";
-    public static final String KEY_NEW_GCD = "pref_gcd";
-    public static final String KEY_OLD_PERSON_SHARE_PERCENT_NUMERATOR = "pref_old_person_share_percent_numerator";
-    public static final String KEY_OLD_PERSON_SHARE_PERCENT_DENOMINATOR = "pref_old_person_share_percent_denominator";
-    public static final String KEY_NEW_PERSON_SHARE_PERCENT_NUMERATOR = "pref_new_person_share_percent_numerator";
-    public static final String KEY_NEW_PERSON_SHARE_PERCENT_DENOMINATOR = "pref_new_person_share_percent_denominator";
+    public static final String USER_ID = "pref_UID";
+    public static final String USER_EMAIL = "pref_user_email";
+    public static final String USER_PHONE = "pref_user_phone";
+    public static final String USER_TOKEN = "pref_user_firebase_token";
+    public static final String USER_NAME = "pref_user_displayed_name";
+
 
     private SharedPreferences prefs;
 

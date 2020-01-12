@@ -121,7 +121,9 @@
     <string name="deleting">Deleting…</string>
     <string name="kilometer">Km</string>
     <string name="mile">mile</string>
-    <string name="instagram_lbl">https://instagram.com/</string>
+    <string name="instagram_lbl" translatable="false">https://instagram.com/</string>
     <string name="instagram_hint">Instagram page link</string>
+    <string name="no_notifications">Hey, it\'s you!\n We will notify you when something comes up</string>
+    <string name="check_network_connection">No Internet Connection, Try again!</string>
 
 </resources>

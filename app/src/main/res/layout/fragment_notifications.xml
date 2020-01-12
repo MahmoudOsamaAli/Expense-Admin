@@ -7,24 +7,25 @@
     <androidx.appcompat.widget.SearchView
         android:id="@+id/search_view_fragment_notification"
         style="@style/search_view_style"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:visibility="gone"
         app:queryHint="Search Here"
         app:searchIcon="@drawable/ic_search_black_24dp" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/search_view_fragment_notification"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        >
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/RV_notification_fragment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:paddingBottom="?android:attr/actionBarSize"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/search_view_fragment_notification">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/RV_notification_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:paddingBottom="?android:attr/actionBarSize" />
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

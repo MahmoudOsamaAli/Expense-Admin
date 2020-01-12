@@ -91,4 +91,9 @@
     <string name="delete">حذف</string>
     <string name="place_deleted_successfully">تم حذف المكان بنجاح!</string>
     <string name="deleting">جاري الحذف…</string>
+    <string name="kilometer">كم</string>
+    <string name="mile">ميل</string>
+    <string name="instagram_hint">رابط صفحة الانستجرام</string>
+    <string name="no_notifications">أهلا، انه انت! \n سنوافيك باي اشعار جديد اذا وجد!</string>
+    <string name="check_network_connection">لا يوجد اتصال بالانترنت ، حاول مجددا!</string>
 </resources>

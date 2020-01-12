@@ -11,17 +11,19 @@ import androidx.viewpager.widget.PagerAdapter;
 
 import com.expense.expenseadmin.R;
 import com.expense.expenseadmin.pojo.PlaceImage;
+import com.expense.expenseadmin.view.activities.displayImage.DisplayImage;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 public class FullScreenPagerAdapter extends PagerAdapter {
 
-    private Context mContext;
-    private ArrayList<PlaceImage> mData;
+    private DisplayImage mContext;
+    private ArrayList<String> mData;
     private LayoutInflater mLayoutInflater;
     private static final String TAG = "MyPagerAdapter";
 
-    public FullScreenPagerAdapter(Context mContext, ArrayList<PlaceImage> mData ) {
+    public FullScreenPagerAdapter(DisplayImage mContext, ArrayList<String> mData ) {
         this.mContext = mContext;
         this.mData = mData;
         mLayoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -32,7 +34,8 @@ public class FullScreenPagerAdapter extends PagerAdapter {
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
         View view = mLayoutInflater.inflate(R.layout.place_image_item ,container , false);
         ImageView imageView = view.findViewById(R.id.place_images);
-        imageView.setImageResource(mData.get(position).getmImage());
+//        imageView.setImageResource(mData.get(position).getmImage());
+        Picasso.get().load(mData.get(position)).into(imageView);
         container.addView(view);
         return view;
     }
