@@ -16,6 +16,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+import uk.co.senab.photoview.PhotoView;
+
 public class FullScreenPagerAdapter extends PagerAdapter {
 
     private DisplayImage mContext;
@@ -33,7 +35,7 @@ public class FullScreenPagerAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
         View view = mLayoutInflater.inflate(R.layout.place_image_item ,container , false);
-        ImageView imageView = view.findViewById(R.id.place_images);
+        PhotoView imageView = view.findViewById(R.id.place_images);
 //        imageView.setImageResource(mData.get(position).getmImage());
         Picasso.get().load(mData.get(position)).into(imageView);
         container.addView(view);

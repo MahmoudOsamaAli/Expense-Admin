@@ -7,11 +7,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     >
 
-    <uk.co.senab.photoview.PhotoView
+    <ImageView
         android:id="@+id/place_images"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="fitCenter"
+        android:scaleType="fitXY"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

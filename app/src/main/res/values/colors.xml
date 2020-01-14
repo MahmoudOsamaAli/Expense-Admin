@@ -8,6 +8,7 @@
     <color name="colorAccent">#394a62</color>
 
     <color name="text_color">@android:color/black</color>
+    <color name="black">#000000</color>
     <color name="progress_start">#32cb00</color>
 <!--    <color name="progress_start">#fdd835</color>-->
     <color name="gray_light">#d1d1ba</color>
