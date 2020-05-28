@@ -1,22 +1,16 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimary">@color/colorPrimaryDark2</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="searchViewStyle">@style/ThemeOverlay.AppCompat.Light</item>
         <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
-<!--        <item name="android:windowBackground">@drawable/splash_screen</item>-->
         <item name="android:colorControlHighlight" tools:targetApi="lollipop">@color/text_color</item>
     </style>
 
-    <style name="launcher" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-        <item name="android:colorControlHighlight" tools:targetApi="lollipop">@color/text_color</item>
-    </style>
     <style name="DrawerStyle" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="android:activatedBackgroundIndicator">@drawable/drawer_item</item>
     </style>
@@ -47,9 +41,6 @@
         <item name="color">@android:color/white</item>
     </style>
 
-    <!--    <style name="AppTheme.toolbarStyle" type="android:Theme.Holo">-->
-    <!--        <item name="android:color">@color/white</item>-->
-    <!--    </style>-->
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Dark">
         <item name="colorControlNormal">@android:color/white</item>
         <item name="android:textSize">12sp</item>
